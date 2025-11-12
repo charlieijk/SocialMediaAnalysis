@@ -1,0 +1,15 @@
+# Minimal, conflict-free requirements for SocialMediaAnalysis
+numpy>=1.25.2,<2.6
+scipy>=1.11,<2.6
+scikit-learn
+flask
+flask-cors
+nltk
+pandas
+matplotlib
+ipykernel
+jupyter
+nbconvert
+# Apple Silicon (optional):
+# tensorflow-macos>=2.16,<3
+# tensorflow-metal
