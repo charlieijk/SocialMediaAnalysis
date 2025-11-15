@@ -15,3 +15,4 @@ src/social_media_analysis.egg-info/
 # Data/models (uncomment if you want to keep these out of git)
 # data/
 # models/
+.virtual_documents/
