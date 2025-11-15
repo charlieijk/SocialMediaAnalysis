@@ -1,31 +1,47 @@
+Metadata-Version: 2.4
+Name: social-media-analysis
+Version: 0.1.0
+Summary: Lightweight sentiment analysis helpers for social media experiments
+Author: Charlie Ijk
+License: MIT License
+        
+        Copyright (c) 2024 charlie
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Homepage, https://github.com/charlieijk/SocialMediaAnalysis
+Project-URL: Issues, https://github.com/charlieijk/SocialMediaAnalysis/issues
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pandas>=2.1
+Requires-Dist: numpy>=1.25
+Requires-Dist: scikit-learn>=1.3
+Requires-Dist: joblib>=1.3
+Provides-Extra: dev
+Requires-Dist: pytest>=7.4; extra == "dev"
+Requires-Dist: pytest-cov>=4.1; extra == "dev"
+Dynamic: license-file
+
 # SocialMediaAnalysis
 
-Notebook-first sentiment analysis experiments for social media text, now paired with a lightweight Python package that exposes the same ML workflow from regular scripts and automated tests.
-
-## Python Package Overview
-- Source lives under `src/social_media_analysis/` and can be installed with `pip install -e .[dev]`.
-- The package exposes utilities to load the sample CSVs (`social_media_analysis.data`), normalize noisy text (`social_media_analysis.preprocess`), and train/evaluate a logistic-regression based sentiment model (`social_media_analysis.model`).
-- `python -m social_media_analysis.cli` offers `train`, `predict`, and `evaluate` sub-commands so you can rerun notebook logic from the terminal/CI.
-- All datasets default to `data/processed/`. Override by exporting `SMA_DATA_DIR=/path/to/csvs`.
-
-## Quick Start (Python)
-1. Create a virtual environment (conda, venv, or pyenv) with Python 3.10+.
-2. Install the package plus dev tools:
-   ```bash
-   python -m pip install -e .[dev]
-   ```
-3. Run the unit tests locally (this is what CI runs on GitHub Actions):
-   ```bash
-   pytest
-   ```
-4. Train/evaluate a model straight from the CLI:
-   ```bash
-   python -m social_media_analysis.cli train --model-path models/demo.joblib
-   python -m social_media_analysis.cli evaluate --model-path models/demo.joblib
-   python -m social_media_analysis.cli predict --model-path models/demo.joblib --text "I love this!" --text "This update is terrible"
-   ```
-
-The existing notebook-driven workflow still works exactly the same; the Python package simply offers a tested, importable interface for automation.
+Notebook-first sentiment analysis experiments for social media text.
 
 ## What's Included
 - **End-to-end notebooks** such as `simple_demo.ipynb`, `insights.ipynb`, `twitter_client.ipynb`, and `ab_testing_api.ipynb` that walk through data exploration, model training, API prototyping, and simulated A/B testing.
@@ -37,11 +53,10 @@ The original JavaScript/React frontend has been removed so everything now runs i
 
 ## Getting Started
 1. Create a virtual environment (conda, venv, or pyenv) with Python 3.10+.
-2. Install dependencies for the notebook experience:
+2. Install dependencies:
    ```bash
    pip install -r requirements.txt
    ```
-   *(or use `pip install -e .[dev]` if you only need the Python package/tests)*
 3. Launch Jupyter Lab/Notebook:
    ```bash
    jupyter lab
@@ -75,7 +90,7 @@ In the Lab interface, open and run the notebook that matches what you want to ex
 - `backend/` – reusable components (API demos, configs, models, utilities).
 - `data/` – prepared CSV assets; replace with your own datasets as needed.
 - `scripts/` – additional helper notebooks (e.g., corpus preparation).
-- `tests/` – pytest suite covering the Python package helpers.
+- `tests/` – placeholder for future automated checks around notebook logic.
 
 ## Dependencies
 `requirements.txt` now reflects only the libraries actually imported in the notebooks (NLTK, spaCy, scikit-learn, pandas/numpy, Tweepy, Flask/CORS, Matplotlib/Seaborn, TensorFlow, PyTorch, Transformers, python-dotenv, plus JupyterLab/IPyKernel so you can run the notebooks). Plotly, TextBlob, WordCloud, Streamlit, and Requests were removed when the JavaScript frontend was dropped; re-add them if you later build a richer UI.
